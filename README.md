@@ -9,8 +9,7 @@
 7. In cross-encoder the query and passage are concatenated together and jointly encoded by the ranking model, allowing for deeper interactions and better understanding of their semantic relationship. The self-attention mechanism of transformers allows the model to fully capture how tokens in the query relate to tokens in the passage.
 8. The corpus is splited in chunks and transformed into vector representations after than Approximate Nearest Neighbor (ANN) algorithm is used to efficiently find data points (or vectors) that are closest to a given query point in a high-dimensional space.
 9. We also noticed from the MTEB which is a bench mark for text embedding models , that larger the embedding models in parameters more it gets accurate . But larger models requires more computational power, therefore multi-stage text retrieval pipelines is introduced which consist of a embedding model and a ranking model , the embedding model is used to find the top-k candidate passages, after which the ranking models is used to redefine the ranking.
-10. In this paper following models are used for evaluation:
-Embedding models
+10. In this paper following models are used for evaluation:Embedding models
 1.Snowflake/snowflake-arctic-embed-l
 2.nvidia/nv-embedqa-e5-v5
 3.nvidia/nv-embedqa-mistral-7b-v2
@@ -20,8 +19,7 @@ Ranking models
 3.mixedbread-ai/mxbai-rerank-large-v1
 4.bge-reranker-v2-m3
 5.NV-RerankQA-Mistral-4B-v3
-
-11.The general pipline that the paper used is to use datasets from BEIR  datasets, which are already chunked and truncated to max 512 tokens. The chunked passages are embedded using an embedding model and stored in a vector index / database. The querying pipeline then takes place for providing for each query a list with ranked passages for retrieval metrics computation (NDCG@10). In detail, the question is embedded and it is performed a vector search (e.g. using exact or Approximate Nearest Neighbour (ANN) algorithm) on the vector index, returning the top-k most relevant passages for the question. Finally, the top-k (set to 100 in our evaluation experiments) passages are re-ranked with a ranking model to generate the final ordered list.
+11. The general pipline that the paper used is to use datasets from BEIR  datasets, which are already chunked and truncated to max 512 tokens. The chunked passages are embedded using an embedding model and stored in a vector index / database. The querying pipeline then takes place for providing for each query a list with ranked passages for retrieval metrics computation (NDCG@10). In detail, the question is embedded and it is performed a vector search (e.g. using exact or Approximate Nearest Neighbour (ANN) algorithm) on the vector index, returning the top-k most relevant passages for the question. Finally, the top-k (set to 100 in our evaluation experiments) passages are re-ranked with a ranking model to generate the final ordered list.
 12. These three Question-Answering datasets from BEIR retrieval benchmark: Natural Questions (NQ) , HotpotQA and FiQA is used for evaluation.
 13. NV-RerankQA-Mistral4B-v3 , this model performed best in the benchmark
 14. They finetuned the model by keeping only the bottom 16 layers out of its 32 layers, and also modifying its self-attention mechanism from uni-directional (causal) to bi-directional and cange the loss function from binary cross entropy loss to  InfoNCE loss
