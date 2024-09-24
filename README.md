@@ -1,15 +1,15 @@
 #Enhancing Q&A Text Retrieval with Ranking Models: Benchmarking, fine-tuning and deploying Rerankers for RAG
 
-This paper discusses how ranking models are used to improve accuracy of the retrieval system, buy benchmarking various publicly available ranking models.
-The paper introduces by stating that text retrieval, which is a core component of many retrieval applications, relies heavily on LLMs which are further improved by RAG systems.
-Here embedding models are used to convert text into vector representations which captures semantic relationships between words or phrases. They are based on Transformer architecture, and trained using Constrative Learning i.e creating embeddings for pairs of texts and optimizing to make relevant (positive) pairs close in vector space while pushing irrelevant (negative) pairs apart.
-Here ranking models are used to order a set of documents, passages, or answers based on their relevance to a given query in text retrieval systems.
-Embedding models are implemented as bi-encoders and ranked models are implemented as cross-encoders.
-In bi-encoder the query and passage are encoded separately into vectors, and their similarity is measured using methods like cosine similarity or inner product. This allows for efficient large-scale retrieval, but lacks deep interaction between the query and passage.
-In cross-encoder the query and passage are concatenated together and jointly encoded by the ranking model, allowing for deeper interactions and better understanding of their semantic relationship. The self-attention mechanism of transformers allows the model to fully capture how tokens in the query relate to tokens in the passage.
-The corpus is splited in chunks and transformed into vector representations after than Approximate Nearest Neighbor (ANN) algorithm is used to efficiently find data points (or vectors) that are closest to a given query point in a high-dimensional space.
-We also noticed from the MTEB which is a bench mark for text embedding models , that larger the embedding models in parameters more it gets accurate . But larger models requires more computational power, therefore multi-stage text retrieval pipelines is introduced which consist of a embedding model and a ranking model , the embedding model is used to find the top-k candidate passages, after which the ranking models is used to redefine the ranking.
-In this paper following models are used for evaluation:
+1. This paper discusses how ranking models are used to improve accuracy of the retrieval system, buy benchmarking various publicly available ranking models.
+2. The paper introduces by stating that text retrieval, which is a core component of many retrieval applications, relies heavily on LLMs which are further improved by RAG systems.
+3. Here embedding models are used to convert text into vector representations which captures semantic relationships between words or phrases. They are based on Transformer architecture, and trained using Constrative Learning i.e creating embeddings for pairs of texts and optimizing to make relevant (positive) pairs close in vector space while pushing irrelevant (negative) pairs apart.
+4. Here ranking models are used to order a set of documents, passages, or answers based on their relevance to a given query in text retrieval systems.
+5. Embedding models are implemented as bi-encoders and ranked models are implemented as cross-encoders.
+6. In bi-encoder the query and passage are encoded separately into vectors, and their similarity is measured using methods like cosine similarity or inner product. This allows for efficient large-scale retrieval, but lacks deep interaction between the query and passage.
+7. In cross-encoder the query and passage are concatenated together and jointly encoded by the ranking model, allowing for deeper interactions and better understanding of their semantic relationship. The self-attention mechanism of transformers allows the model to fully capture how tokens in the query relate to tokens in the passage.
+8. The corpus is splited in chunks and transformed into vector representations after than Approximate Nearest Neighbor (ANN) algorithm is used to efficiently find data points (or vectors) that are closest to a given query point in a high-dimensional space.
+9. We also noticed from the MTEB which is a bench mark for text embedding models , that larger the embedding models in parameters more it gets accurate . But larger models requires more computational power, therefore multi-stage text retrieval pipelines is introduced which consist of a embedding model and a ranking model , the embedding model is used to find the top-k candidate passages, after which the ranking models is used to redefine the ranking.
+10. In this paper following models are used for evaluation:
 Embedding models
 1.Snowflake/snowflake-arctic-embed-l
 2.nvidia/nv-embedqa-e5-v5
