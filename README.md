@@ -1,3 +1,5 @@
+Paper: https://www.arxiv.org/abs/2409.07691
+
 #Enhancing Q&A Text Retrieval with Ranking Models: Benchmarking, fine-tuning and deploying Rerankers for RAG
 
 1. This paper discusses how ranking models are used to improve accuracy of the retrieval system, buy benchmarking various publicly available ranking models.
